@@ -8,16 +8,17 @@
         Title="MainWindow" Height="600" Width="500">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80*"/>
-            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="85*"/>
+            <ColumnDefinition Width="15*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="85*"/>
             <RowDefinition Height="15*"/>
         </Grid.RowDefinitions>
-        <Label x:Name="chatL" Content="Chat" Grid.Row="0" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="chatTextB" Text="Chat" FontSize="30" Grid.Row="0"/>
+        <TextBlock x:Name="chatTimeTB" Text="time" FontSize="30" Grid.Row="0" Grid.Column="1"/>
         <TextBox x:Name="messageTB" Text="Введите сообщение" FontSize="30" Padding="20,0,0,0" VerticalContentAlignment="Center" Grid.Row="1"/>
-        <Button x:Name="button" Content="Button" Grid.Row="1" Grid.Column="1"/>
+        <Button x:Name="button" Content=">" FontSize="50" Grid.Row="1" Grid.Column="1"/>
 
     </Grid>
 </Window>
