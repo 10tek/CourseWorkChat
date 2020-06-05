@@ -6,4 +6,21 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Icons\send.ico" />
+    <None Remove="Icons\send.png" />
+    <None Remove="Icons\send1.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Chat.DataAccess\Chat.DataAccess.csproj" />
+    <ProjectReference Include="..\Chat.Services\Chat.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\send.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
 </Project>

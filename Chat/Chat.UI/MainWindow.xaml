@@ -5,20 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chat.UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="500">
+        Title="G-chat" Height="700" Width="700" WindowStartupLocation="CenterScreen">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FF363B70" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="85*"/>
-            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="85*"/>
-            <RowDefinition Height="15*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="chatTextB" Text="Chat" FontSize="30" Grid.Row="0"/>
-        <TextBlock x:Name="chatTimeTB" Text="time" FontSize="30" Grid.Row="0" Grid.Column="1"/>
-        <TextBox x:Name="messageTB" Text="Введите сообщение" FontSize="30" Padding="20,0,0,0" VerticalContentAlignment="Center" Grid.Row="1"/>
-        <Button x:Name="button" Content=">" FontSize="50" Grid.Row="1" Grid.Column="1"/>
+        <DataGrid x:Name="messagesDG" FontSize="24" AutoGenerateColumns="False" IsReadOnly="True" Grid.ColumnSpan="2" Background="#FF161627">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Author}" Width="30*">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style>
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                            <Setter Property="TextBlock.TextAlignment" Value="Left"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>   
+                <DataGridTextColumn Binding="{Binding Text}" Width="40*"/>
+                <DataGridTextColumn Binding="{Binding CreationDate.TimeOfDay}" Width="12*"/>
+            </DataGrid.Columns>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF161627" />
+                            <Setter Property="Foreground" Value="AliceBlue" />
+                        </Trigger>
+                    </Style.Triggers>
+                    <Style.Setters>
+                        <Setter Property="Background" Value="#FF161627" />
+                        <Setter Property="Foreground" Value="AliceBlue" />
+                    </Style.Setters>
+                </Style>
+            </DataGrid.RowStyle>
+        </DataGrid>
+        <TextBox x:Name="messageTB" TextWrapping="Wrap" GotFocus="MessageTBGotFocus"  Text="Введите сообщение" FontSize="24"  Background="#FF161627" Foreground="AliceBlue" Padding="20,0,0,0" VerticalContentAlignment="Center" Grid.Row="1"/>
+        <Button x:Name="sendMessageBtn" FontSize="50" Grid.Row="1" Grid.Column="1" Click="SendMessageBtnClick" Background="#FF161627">
+            <Image Source="Icons/send.png" />
+        </Button>
 
     </Grid>
 </Window>
